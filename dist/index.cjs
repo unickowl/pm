@@ -163,7 +163,7 @@ async function runScript(pm, args) {
 }
 
 function showAgent(pm) {
-  console.log(chalk__default.cyan(`Current package manager: ${pm}`));
+  console.log(`${chalk__default.cyan("Using package manager: ")} ${chalk__default.bgMagenta(" " + pm + " ")}`);
 }
 
 async function run(args) {
@@ -172,7 +172,6 @@ async function run(args) {
     console.log(chalk__default.yellow("No package manager detected. Please select one:"));
     pm = await promptPackageManager();
   }
-  console.log(chalk__default.green(`Using package manager: ${pm}`));
   const command = args[0];
   const restArgs = args.slice(1);
   await executeCommand(pm, command, restArgs);

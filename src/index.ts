@@ -16,8 +16,6 @@ export async function run(args: string[]): Promise<void> {
     pm = await promptPackageManager();
   }
 
-  console.log(chalk.green(`Using package manager: ${pm}`));
-
   const command = args[0];
   const restArgs = args.slice(1);
 
