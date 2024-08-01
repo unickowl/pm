@@ -35,6 +35,28 @@ async function promptPackageManager() {
 }
 
 function install(pm, packages, options) {
+  if (!packages.length && !options.dev) {
+    const dev2 = options.dev ? " -D" : "";
+    const isInstallAll = !options.dev && !packages.length;
+    const command2 = {
+      npm: `npm install${dev2}`,
+      pnpm: `pnpm add${dev2}`,
+      yarn: `yarn add${dev2}`,
+      bun: `bun add${dev2}`
+    }[pm];
+    const commandWithoutPackage = {
+      npm: "npm install",
+      pnpm: "pnpm install",
+      yarn: "yarn",
+      bun: "bun install"
+    }[pm];
+    try {
+      execSync(isInstallAll ? commandWithoutPackage : command2, { stdio: "inherit" });
+    } catch (error) {
+      console.error("Installation failed:", error);
+    }
+    return;
+  }
   const dev = options.dev ? " -D" : "";
   const command = {
     npm: `npm install${dev}`,
