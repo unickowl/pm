@@ -7,7 +7,7 @@ import inquirer from 'inquirer';
 export async function runScript(pm: PackageManager, args: string[]) {
   const command = {
     npm: 'npm run',
-    pnpm: 'pnpm',
+    pnpm: 'pnpm run',
     yarn: 'yarn',
     bun: 'bun run',
   }[pm];

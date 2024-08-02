@@ -120,7 +120,7 @@ function dlx(pm, args) {
 async function runScript(pm, args) {
   const command = {
     npm: "npm run",
-    pnpm: "pnpm",
+    pnpm: "pnpm run",
     yarn: "yarn",
     bun: "bun run"
   }[pm];
